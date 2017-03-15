@@ -6,7 +6,8 @@ if( isset($_SESSION['user_id']) ){
 	header("Location: login.php");
 }
 
-require 'database.php';
+//require 'database.php';
+require '../config/boot.php';
 
 if(!empty($_POST['email']) && !empty($_POST['password'])):
 

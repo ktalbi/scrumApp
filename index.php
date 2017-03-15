@@ -2,7 +2,8 @@
 
 session_start();
 
-require 'login/database.php';
+//require 'login/database.php';
+require 'config/boot.php';
 
 if( isset($_SESSION['user_id']) ){
 

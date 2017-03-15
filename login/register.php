@@ -6,7 +6,7 @@ if( isset($_SESSION['user_id']) ){
 	header("Location: /");
 }
 
-require 'database.php';
+require '../config/boot.php';
 
 $message = '';
 
