@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twbs/bootstrap": "^3.3",
+        "cnam/security-jwt-service-provider": "2.*"
+    }
+}
