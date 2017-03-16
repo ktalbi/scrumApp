@@ -6,11 +6,12 @@ if( isset($_SESSION['user_id']) ){
 	header("Location: login.php");
 }
 
-require 'database.php';
+//require 'database.php';
+require '../config/boot.php';
 
 if(!empty($_POST['email']) && !empty($_POST['password'])):
 
-	$records = $conn->prepare('SELECT id,email,password,role FROM users WHERE email = :email');
+	$records = $pdo->prepare('SELECT id,email,password,role FROM users WHERE email = :email');
 	$records->bindParam(':email', $_POST['email']);
 	$records->execute();
 	$results = $records->fetch(PDO::FETCH_ASSOC);
@@ -24,8 +25,12 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 
 	} else if (($results['role'] == "user")) {
 		header("Location: ../user/page4.php");
+
+	} else if (($results['role'] == "NULL")) {
+	  $message = 'Privilèges non définis';
+
 	} else {
-		$message = 'Mauvais identifiants!';
+		$message = 'Mauvais identifiants';
 	}
 
 

@@ -1,6 +1,8 @@
     <html class="bg">
-        <?php include('header.php');
+    <?php
 
+    include('header.php');
+    include('../config/boot.php');
 
 
         $req = $pdo->query('SELECT numero as nummax from sprint where id = (SELECT max(id) FROM sprint)');

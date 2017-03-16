@@ -1,7 +1,9 @@
     <html class="bg">
 
         <?php
-            include('../admin/header.php');?>
+            include('../admin/header.php');
+            include('../config/boot.php');
+            ?>
 
                     </br>
 
@@ -28,7 +30,7 @@
                                               $id = $row['id'];
                                               $numero = $row['numero'];
                                               echo '<option value="'.$numero.'"> ' .$numero. ' </option>';
-                                              if (!$lastNumero)
+                                                if (!$lastNumero)
                                                     $lastNumero = $numero;
                                                 if ($numero < $numero+1)
                                                     $firstNumero = $numero;

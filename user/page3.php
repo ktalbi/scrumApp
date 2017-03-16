@@ -1,6 +1,7 @@
     <html>
 
         <?php include('../admin/header.php');
+              include('../config/boot.php');
         ?>
 
         </br></br>
@@ -137,16 +138,8 @@
                                 <!-- ///  AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                                 <?php
 
-                                try
-                                {
-                                    $bdd = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-                                }
-                                catch(Exception $e)
-                                {
-                                        die('Erreur : '.$e->getMessage());
-                                }
 
-                                $reponse = $bdd->query('select  sprint.id as Sprint, heuresdescendues.heure as NbHeure, heuresdescendues.DateDescendu as date, projet.nom as projet, employe.prenom as employe
+                                $reponse = $pdo->query('select  sprint.id as Sprint, heuresdescendues.heure as NbHeure, heuresdescendues.DateDescendu as date, projet.nom as projet, employe.prenom as employe
                                 FROM heuresdescendues
                                 inner JOIN employe ON heuresdescendues.id_Employe = employe.id
                                 INNER JOIN projet on projet.id = heuresdescendues.id_Projet
@@ -200,16 +193,9 @@
 
                                 <?php
 
-                                    try
-                                    {
-                                        $bdd = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-                                    }
-                                    catch(Exception $e)
-                                    {
-                                            die('Erreur : '.$e->getMessage());
-                                    }
 
-                                    $reponse = $bdd->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure, heuresdescendues.DateDescendu as date
+
+                                    $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure, heuresdescendues.DateDescendu as date
                                     FROM heuresdescendues
                                     inner JOIN employe ON heuresdescendues.id_Employe = employe.id
                                     INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
@@ -249,17 +235,9 @@
 
                                 <?php
 
-                                try
-                                {
-                                    $bdd = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-                                }
 
-                                catch(Exception $e)
-                                {
-                                        die('Erreur : '.$e->getMessage());
-                                }
 
-                                $reponse = $bdd->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure
+                                $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure
                                         FROM heuresdescendues
                                         inner JOIN employe ON heuresdescendues.id_Employe = employe.id
                                         INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint

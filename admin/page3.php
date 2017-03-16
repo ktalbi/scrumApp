@@ -1,7 +1,9 @@
     <html>
+    <?php
 
-        <?php include('header.php');
-        ?>
+    include('header.php');
+    include('../config/boot.php');
+    ?>
 
         </br></br>
 
@@ -137,15 +139,6 @@
                                 <!-- ///  AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                                 <?php
 
-                                try
-                                {
-                                    $pdo = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-                                }
-                                catch(Exception $e)
-                                {
-                                        die('Erreur : '.$e->getMessage());
-                                }
-
                                 $reponse = $pdo->query('select  sprint.id as Sprint, heuresdescendues.heure as NbHeure, heuresdescendues.DateDescendu as date, projet.nom as projet, employe.prenom as employe
                                 FROM heuresdescendues
                                 inner JOIN employe ON heuresdescendues.id_Employe = employe.id
@@ -200,14 +193,6 @@
 
                                 <?php
 
-                                    try
-                                    {
-                                        $pdo = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-                                    }
-                                    catch(Exception $e)
-                                    {
-                                            die('Erreur : '.$e->getMessage());
-                                    }
 
                                     $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure, heuresdescendues.DateDescendu as date
                                     FROM heuresdescendues
@@ -249,15 +234,6 @@
 
                                 <?php
 
-                                try
-                                {
-                                    $pdo = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-                                }
-
-                                catch(Exception $e)
-                                {
-                                        die('Erreur : '.$e->getMessage());
-                                }
 
                                 $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure
                                         FROM heuresdescendues
