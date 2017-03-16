@@ -1,6 +1,6 @@
 <?php
 
-  include("safe.php");
+  require_once("safe.php");
 
 
  try
