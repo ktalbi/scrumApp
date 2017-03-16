@@ -185,24 +185,5 @@
 
         </br>
 
-        <script>
-        $(document).ready(function() {
-        $('#tomlabonnenote').DataTable();
-        } );
-
-
-        $(function() {
-            jQuery.fn.extend({
-                disable: function(state) {
-                    return this.each(function() {
-                        this.disabled = state;
-                    });
-                }
-            });
-
-            $('button').disable(false); // true = disabled false= enabled
-        });
-
-        </script>
 
     </html>

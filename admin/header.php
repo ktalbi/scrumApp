@@ -3,8 +3,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-<link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap.min.css"/>
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/bootstrap/dataTables.bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.css" />
 <link rel="stylesheet" href="../css/style.css" />
 <link rel="shortcut icon" href="favicon.ico"> <!-- fix the favicon error 404 -->
 
@@ -31,24 +31,14 @@ include("../config/boot.php");
 
   <!-- Links to  scripts -->
 
-<script src="../jquery/js/jquery-3.1.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../bootstrap/js/bootstrap-datetimepicker.js"></script>
-<script src="../jquery/js/jquery.dataTables.min.js"></script>
-<script src="../bootstrap/js/dataTables.bootstrap.min.js"></script>
-<script src="../highcharts/js/highcharts.js"></script>
-<script src="../highcharts/js/exporting.js"></script>
-<script>
-//Set the active class for tab with page name
-    $(document).ready(function(){
-        var url = window.location.href;
-        var array = url.split('/');
-        var lastsegment = array[array.length-1];
-        $('li.active').removeClass('active');
-        $('a[href="+lastsegment+"]').parent().addClass('active');
-    });
+<script src="../js/jquery/jquery-3.1.1.min.js"></script>
+<script src="../js/bootstrap/bootstrap.min.js"></script>
+<script src="../js/bootstrap/bootstrap-datetimepicker.js"></script>
+<script src="../js/jquery/jquery.dataTables.min.js"></script>
+<script src="../js/bootstrap/dataTables.bootstrap.min.js"></script>
+<script src="../js/highcharts/highcharts.js"></script>
+<script src="../js/highcharts/exporting.js"></script>
+<script src="../js/app.js"></script>
 
-
-</script>
 </body>
 </html>

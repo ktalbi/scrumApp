@@ -267,52 +267,5 @@
 
         </div>
 
-        <script>
-        // script pour transformer la table bootstrap en datable bootstrap et avoir le mode de trie possible
-        $(document).ready(function() {
-            $('#tomlabonnenote').DataTable();
-        } );
-
-        //
-        $('#dateDebut').datetimepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            minView : 2
-        });
-
-        //
-        function DateAujourdhui(_id){
-            var _dat = document.querySelector(_id);
-            var aujourdui = new Date(),
-                j = aujourdui.getDate()-1,
-                m = aujourdui.getMonth()+1,
-                a = aujourdui.getFullYear(),
-                data;
-
-            if(j < 10){
-                j = "0" + j;
-            };
-            if(m < 10){
-                m = "0" + m;
-            };
-            data = a + "-" + m + "-" + j;
-            _dat.value = data;
-        };
-        DateAujourdhui("#dateDebut");
-
-        $(function() {
-            jQuery.fn.extend({
-                disable: function(state) {
-                    return this.each(function() {
-                        this.disabled = state;
-                    });
-                }
-            });
-
-            $('button').disable(true); // true = disabled false= enabled
-        });
-
-
-        </script>
 
     </html>

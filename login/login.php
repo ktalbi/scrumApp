@@ -3,7 +3,7 @@
 session_start();
 
 if( isset($_SESSION['user_id']) ){
-	header("Location: login.php");
+	$_SESSION['user_id'] = $results['id'];
 }
 
 //require 'database.php';
@@ -20,7 +20,7 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 
 	if(count($results) > 0 && password_verify($_POST['password'], $results['password']) && ($results['role'] == "admin")) {
 
-		$_SESSION['user_id'] = $results['id'];
+
 		header("Location: ../admin/page4.php");
 
 	} else if (($results['role'] == "user")) {
