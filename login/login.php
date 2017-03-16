@@ -33,7 +33,7 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 		$message = 'Mauvais identifiants';
 	}
 
-
+echo json_encode($results);
 endif;
 
 ?>

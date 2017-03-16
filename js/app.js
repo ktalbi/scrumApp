@@ -5,7 +5,7 @@ let ready = function() {
   // disable button by default
 
 
-  $(function() {
+/*  $(function() {
       jQuery.fn.extend({
           disable: function(state) {
               return this.each(function() {
@@ -15,8 +15,34 @@ let ready = function() {
       });
 
       $('button').disable(false); // true = disabled false= enabled
-  });
+  });*/
 
+
+
+  $.ajax({
+      url : '../login/login.php',
+      type : 'POST',
+      data : data,
+      dataType : 'json',
+      success : function(data) {
+          jQuery.fn.extend({
+              disable: function(state) {
+                  return this.each(function() {
+                      this.disabled = state;
+                  });
+              }
+          });
+
+          if (results['role'] === "admin") {
+
+        $('button').disable(false); // true = disabled false= enabled
+
+        }
+         else {
+             $('button').disable(true); // true = disabled false= enabled
+         }
+      }
+    });
 
     //Set the active class for tab with page name (from header.php )
     $(document).ready(function() {
