@@ -24,14 +24,8 @@ let ready = function() {
       type : 'POST',
       data : data,
       dataType : 'json',
-      success : function(data) {
-          jQuery.fn.extend({
-              disable: function(state) {
-                  return this.each(function() {
-                      this.disabled = state;
-                  });
-              }
-          });
+      success : function() {
+
 
           if (results['role'] === "admin") {
 
