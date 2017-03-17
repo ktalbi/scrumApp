@@ -7,14 +7,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 $app->get('/action/getChart/{numero}', function ($numero) use ($app) {
     $qb = $app['db']->createQueryBuilder('');
 
-    try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-    }
-    catch(Exception $e)
-    {
-            die('Erreur : '.$e->getMessage());
-    }
 
     if ($numero <= 0)
     {
@@ -25,7 +17,7 @@ $app->get('/action/getChart/{numero}', function ($numero) use ($app) {
     {
         $sql = "SELECT $numero as sprint, burndownhour as value, date as heure , (SELECT sum(interference.heure)  FROM interference where interference.id_Sprint = ( SELECT sprint.id FROM sprint WHERE sprint.numero = $numero )) as interferances FROM `vburndown`where id_Sprint = (SELECT sprint.id FROM sprint WHERE sprint.numero = $numero) order by Date";
     }
-    $tmpQuery = $bdd->prepare($sql);
+    $tmpQuery = $pdo->prepare($sql);
     $tmpQuery->execute();
 
 
@@ -58,14 +50,6 @@ $app->get('/action/getChart/{numero}', function ($numero) use ($app) {
 $app->get('/action/sprintExist/{numero}', function ($numero) use ($app) {
     $qb = $app['db']->createQueryBuilder('');
 
-    try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=scrum;charset=utf8', 'root', '');
-    }
-    catch(Exception $e)
-    {
-            die('Erreur : '.$e->getMessage());
-    }
 
     if ($numero != 0)
     {
@@ -76,7 +60,7 @@ $app->get('/action/sprintExist/{numero}', function ($numero) use ($app) {
     {
         return $app->json("envois pas des conneries toi");
     }
-    $tmpQuery = $bdd->prepare($sql);
+    $tmpQuery = $pdo->prepare($sql);
     $tmpQuery->execute();
 
 

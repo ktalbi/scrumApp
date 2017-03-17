@@ -32,9 +32,9 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 	} else {
 		$message = 'Mauvais identifiants';
 	}
-
+    $credentials = json_encode($results['role']);
 endif;
-echo json_encode($results['role']);
+
 ?>
 
 <!DOCTYPE html>

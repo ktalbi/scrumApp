@@ -1,9 +1,7 @@
     <html class="bg">
-    <?php
 
-    include('header.php');
+    <?php include('header.php');
     include('../config/boot.php');
-
 
         $req = $pdo->query('SELECT numero as nummax from sprint where id = (SELECT max(id) FROM sprint)');
         $data = $req->fetch();
@@ -59,7 +57,7 @@
                 </div>
 
     </br></br>
-                <!-- Le Boutton submit -->
+                <!-- Le Bouton submit -->
                     <div class="row">
                     <div class="col-sm-4"></div>
                         <div class="col-sm-2">
@@ -71,6 +69,6 @@
 
             </div>
 
-        </form>    
+        </form>
 
     </html>

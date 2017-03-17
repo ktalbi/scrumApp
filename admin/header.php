@@ -13,6 +13,10 @@
 
 <body>
 
+  <!-- Link to db PDO connect -->
+  <?php include("../config/boot.php"); ?>
+
+
     <!-- Navbar Twitter Bootstrap -->
 
 <ul class="nav nav-tabs nav-justified">
@@ -23,11 +27,6 @@
   <li><a href="../login/logout.php">Déconnexion</a></li>
 </ul>
 
-<!-- Link to db PDO connect -->
-
-<?php
-include("../config/boot.php");
-?>
 
   <!-- Links to  scripts -->
 

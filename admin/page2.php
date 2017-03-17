@@ -1,8 +1,6 @@
     <html>
-        <?php
-
-        include('header.php');
-        include('../config/boot.php');
+        <?php include('header.php');
+              include('../config/boot.php');
         ?>
 
         </br></br>

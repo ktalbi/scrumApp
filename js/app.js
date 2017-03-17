@@ -18,16 +18,14 @@ let ready = function() {
   });*/
 
 
-
   $.ajax({
       url : '../login/login.php',
-      type : 'POST',
-      data : data,
+      type : 'GET',
       dataType : 'json',
       success : function() {
 
 
-          if (results['role'] === "admin") {
+          if (credentials === "admin") {
 
         $('button').disable(false); // true = disabled false= enabled
 
@@ -37,6 +35,8 @@ let ready = function() {
          }
       }
     });
+
+
 
     //Set the active class for tab with page name (from header.php )
     $(document).ready(function() {
@@ -72,12 +72,11 @@ let ready = function() {
             j = aujourdui.getDate(),
             m = aujourdui.getMonth() + 1,
             a = aujourdui.getFullYear(),
-            data;
+           data;
 
 
         /* If days and/or month < 10 we concat with a "0"
          so that the format is valid  */
-
 
 
         if (j < 10) {
