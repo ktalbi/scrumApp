@@ -2,6 +2,6 @@
 Scrum Management Application
 
 
-Initial version; 
+Initial version;
 
-Scheduled update: SPA using Vue.js
+Scheduled update: SPA using Vue.js, Higcharts and PhP Silex framework
