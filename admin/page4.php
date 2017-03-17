@@ -51,12 +51,9 @@
                         <button  class="btn btn-primary btn-block" onClick="plus1()">
                           <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                         </button>
-
-                    </div>
-
+                 </div>
             </div>
-
-        </div>
+      </div>
 
         </br></br>
 
@@ -64,8 +61,6 @@
             <div class="col-md-1"></div>
                 <div class="col-md-5">
                     <div id="container"></div>
-
-                </div>
+           </div>
         </div>
-
-    </html>
+</html>

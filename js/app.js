@@ -90,7 +90,7 @@ let ready = function() {
     };
 
 
-    DateAujourdhui('#dateDebut'); /**/
+    DateAujourdhui('#dateDebut'); 
 
 
     /* Set the second datapicker at today's date +14 days */

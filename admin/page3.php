@@ -1,5 +1,5 @@
     <html>
-    
+
     <?php include('header.php');
           include('../config/boot.php');
     ?>
@@ -138,7 +138,10 @@
                                 <!-- ///  AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                                 <?php
 
-                                $reponse = $pdo->query('select  sprint.id as Sprint, heuresdescendues.heure as NbHeure, heuresdescendues.DateDescendu as date, projet.nom as projet, employe.prenom as employe
+                                $reponse = $pdo->query('select  sprint.id as Sprint,
+                                heuresdescendues.heure as NbHeure,
+                                heuresdescendues.DateDescendu as date,
+                                projet.nom as projet, employe.prenom as employe
                                 FROM heuresdescendues
                                 inner JOIN employe ON heuresdescendues.id_Employe = employe.id
                                 INNER JOIN projet on projet.id = heuresdescendues.id_Projet

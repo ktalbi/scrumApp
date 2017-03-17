@@ -110,7 +110,14 @@
                     <!-- /// AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                         <?php
 
-                            $reponse = $pdo->query('select sprint.numero as Sprint, attribution.heure as NbHeure, projet.nom as projet, employe.prenom as employe FROM attribution inner JOIN employe ON employe.id = attribution.id_Employe INNER JOIN projet ON projet.id = attribution.id_Projet INNER JOIN sprint ON sprint.id = attribution.id_Sprint where id_sprint=(SELECT max(id) FROM sprint) ORDER BY attribution.id DESC');
+                            $reponse = $pdo->query('select sprint.numero as Sprint,
+                             attribution.heure as NbHeure,
+                             projet.nom as projet,
+                             employe.prenom as employe
+                             FROM attribution inner JOIN employe ON employe.id = attribution.id_Employe
+                             INNER JOIN projet ON projet.id = attribution.id_Projet
+                             INNER JOIN sprint ON sprint.id = attribution.id_Sprint where id_sprint=(SELECT max(id) FROM sprint)
+                             ORDER BY attribution.id DESC');
 
                               echo "<table id=\"tomlabonnenote\" class=\"table table-striped table-bordered\">";
                                 echo "<thead>";
