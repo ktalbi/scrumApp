@@ -25,7 +25,7 @@
                               max="<?php echo $data['nummax']+1; ?>"
                               value="<?php echo $data['nummax']+1; ?>"
                               aria-describedby="basic-addon1">
-                            </div>
+                           </div>
                        </div>
                 </div>
 
@@ -66,9 +66,6 @@
                             </button>
                         </div>
                     </div>
-
-            </div>
-
+              </div>
         </form>
-
     </html>

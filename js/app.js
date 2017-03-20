@@ -14,10 +14,10 @@ let ready = function() {
           }
       });
 
-      $('button').disable(false); // true = disabled false= enabled
+     $('button').disable(false); // true = disabled false= enabled
   });*/
 
-
+/*
   $.ajax({
       url : '../login/login.php',
       type : 'GET',
@@ -35,6 +35,25 @@ let ready = function() {
          }
       }
     });
+
+*/
+
+$.getJSON("../admin/page2.php", success = function (data) {
+
+    let options = "";
+
+    for (let i = 0; i < data.length; i++) {
+
+      options += "<option value'" + data[i].toLowerCase() + "'>" + data[i] + "</option>";
+    }
+$("#test").append(options);
+
+});
+
+
+
+
+
 
 
 
@@ -90,7 +109,7 @@ let ready = function() {
     };
 
 
-    DateAujourdhui('#dateDebut'); 
+    DateAujourdhui('#dateDebut');
 
 
     /* Set the second datapicker at today's date +14 days */
