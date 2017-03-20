@@ -19,25 +19,26 @@
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
                                         <select id = "test" class="form-control"  name="numerosprint">
+                                          <?php  $result = $pdo->query("select id, numero from sprint order by id desc");
+
+
+                                          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                            unset($id, $numero);
+                                            $id = $row['id'];
+                                            $numero = $row['numero'];
+
+                                            $sprint_array[] = array("id" => $id,
+                                            "numero" => $numero);
+
+
+                                          //  echo '<option value="'.$id.'"> ' .$numero. ' </option>';
+                                          }
+                                          // Encoding array in JSON format
+                                          echo json_encode($sprint_array);
+                                          ?>
 
                                         </select>
-                                        <?php
-                                        $result = $pdo->query("select id, numero from sprint order by id desc");
 
-                                        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                          unset($id, $numero);
-                                          $id = $row['id'];
-                                          $numero = $row['numero'];
-
-                                          $return_arr[] = array("id" => $id,
-                                          "numero" => $numero);
-
-
-                                          //echo '<option value="'.$id.'"> ' .$numero. ' </option>';
-                                        }
-                                        // Encoding array in JSON format
-                                        echo json_encode($return_arr);
-                                        ?>
                                 </div>
                             </div>
                         </div>

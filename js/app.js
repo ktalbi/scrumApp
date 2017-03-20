@@ -46,7 +46,10 @@ $.getJSON("../admin/page2.php", success = function (data) {
 
       options += "<option value'" + data[i].toLowerCase() + "'>" + data[i] + "</option>";
     }
-$("#test").append(options);
+
+    console.log(options);
+
+$("#test").html(options);
 
 });
 
