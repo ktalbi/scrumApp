@@ -5,10 +5,15 @@ require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/UserProvider.php';
 
 use Symfony\Component\Security\Core\User\InMemoryUserProvider;
+//use JDesrosiers\Silex\Provider\CorsServiceProvider;
 
 $app = new Silex\Application();
 
 $app->register(new Silex\Provider\RoutingServiceProvider());
+
+$app->register(new JDesrosiers\Silex\Provider\CorsServiceProvider(), [
+    "cors.allowOrigin" => "*",
+]);
 
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
@@ -18,7 +23,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'dbname' => 'scrum',
         'user' => 'root',
-        'password' => '',
+        'password' => 'simplonmars',
         'host' => 'localhost',
         'driver' => 'pdo_mysql',
     ),
@@ -49,8 +54,13 @@ $app['security.firewalls'] = array(
     'pattern' => 'login|register',//|oauth?
     'anonymous' => true,
   ],
-  'secured' => array(
+  'unsecured' => [
     'pattern' => '^.*$',
+    'anonymous' => true,
+  ],
+  'secured' => array(
+    //'pattern' => '^.*$',
+    'pattern' => 'secured',
     'logout' => array('logout_path' => '/logout'),
     'users' => $app['users'],
     'jwt' => array(
@@ -74,5 +84,6 @@ require_once('./actions.php');
 require_once('./users.php');
 
 $app['debug'] = true;
+$app["cors-enabled"]($app);
 
 $app->run();

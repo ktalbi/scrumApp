@@ -1,0 +1,5 @@
+{
+    "require": {
+        "jdesrosiers/silex-cors-provider": "~1.0"
+    }
+}

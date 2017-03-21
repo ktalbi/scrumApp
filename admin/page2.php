@@ -18,7 +18,7 @@
                             <div  class="col-sm-11">
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
-                                        <select id = "test" class="form-control"  name="numerosprint">
+                                        <select id="test" class="form-control"  name="numerosprint">
                                           <?php  $result = $pdo->query("select id, numero from sprint order by id desc");
 
 
@@ -30,11 +30,10 @@
                                             $sprint_array[] = array("id" => $id,
                                             "numero" => $numero);
 
-
-                                          //  echo '<option value="'.$id.'"> ' .$numero. ' </option>';
+                                         echo '<option value="'.$id.'"> ' .$numero. ' </option>';
                                           }
                                           // Encoding array in JSON format
-                                          echo json_encode($sprint_array);
+                                          //echo json_encode($sprint_array);
                                           ?>
 
                                         </select>

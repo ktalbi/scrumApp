@@ -23,6 +23,7 @@ return array(
     'Silex\\Component\\Security\\Core\\' => array($vendorDir . '/cnam/security-jwt-service-provider/src/Silex/Component/Security/Core'),
     'Silex\\' => array($vendorDir . '/silex/silex/src/Silex'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'JDesrosiers\\Silex\\Provider\\' => array($vendorDir . '/jdesrosiers/silex-cors-provider/src'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations'),
