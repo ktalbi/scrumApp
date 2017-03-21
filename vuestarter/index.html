@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Scrum</title>
+  <link rel="stylesheet" href="modules/app/app.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>Scrum </h1>
+    <nav>
+      <ul>
+        <li>
+          <router-link :to="{name: 'home'}">Go to Home</router-link>
+          <router-link :to="{name: 'sprints'}">Go to Sprints</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view></router-view>
+  </div>
+
+  <script src="vendor/axios.min.js"></script>
+  <script src="vendor/lodash.min.js"></script>
+  <script src="vendor/i18next.min.js"></script>
+  <script src="vendor/vue.min.js"></script>
+  <script src="vendor/vue-router.js"></script>
+  <script src="vendor/vuex.js"></script>
+  <script src="vendor/vue-params.js"></script>
+  <script src="vendor/vue-i18next.js"></script>
+
+  <script src="modules/app/app.js"></script>
+  <script src="modules/user/user.store.js"></script>
+  <script src="modules/home/home.view.js"></script>
+  <script src="modules/sprint/sprint.view.js"></script>
+
+  <script>
+    ecoreleve.init();
+  </script>
+</body>
+
+</html>
