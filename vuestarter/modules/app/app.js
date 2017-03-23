@@ -1,11 +1,15 @@
-var ecoreleve = ecoreleve || {};
+var scrum = scrum || {};
 
 Vue.use(VueParams);
 Vue.use(VueI18Next);
 
-ecoreleve.init = function() {
+
+
+
+
+scrum.init = function() {
   //TODO calculate locale, load translations JSON
-  //Call ecoreleve.start() when every async things are complete (translations, templates, ...)
+  //Call scrum.start() when every async things are complete (translations, templates, ...)
   //What about change locale at runtime ?
 
   Vue.params.i18nextLanguage = "en";
@@ -21,56 +25,56 @@ ecoreleve.init = function() {
     }
   });
 
-  ecoreleve.store = new Vuex.Store({
+  scrum.store = new Vuex.Store({
     modules: {
-      user: ecoreleve.storeUser
+      user: scrum.storeUser
     }
   });
 
   var templateNames = ['home/home', 'sprint/sprints', 'sprint/sprint'];
-  ecoreleve.templates = {};
+  scrum.templates = {};
   _.forEach(templateNames, function(templateName) {
     axios.get('./modules/' + templateName + '.tpl.html')
       .then(function(response) {
-        ecoreleve.templates[templateName] = response.data;
-        if (_.keys(ecoreleve.templates).length >= templateNames.length) {
-          ecoreleve.start();
+        scrum.templates[templateName] = response.data;
+        if (_.keys(scrum.templates).length >= templateNames.length) {
+          scrum.start();
         }
       });
   });
 };
 
-ecoreleve.start = function() {
-  ecoreleve.router = new VueRouter({
+scrum.start = function() {
+  scrum.router = new VueRouter({
     routes: [{
       name: 'home',
       path: '/',
-      component: ecoreleve.home
+      component: scrum.home
     }, {
       name: 'sprints',
       path: '/sprints',
-      component: ecoreleve.sprints
+      component: scrum.sprints
     }, {
       name: 'sprint',
       path: '/sprints/:id',
       props: true,
-      component: ecoreleve.sprint
+      component: scrum.sprint
     }]
   });
-  ecoreleve.app = new Vue({
+  scrum.app = new Vue({
     el: '#app',
-    router: ecoreleve.router
+    router: scrum.router
     /*computed: {
       userProfile: function() {
-        return ecoreleve.store.state.user.profile;
+        return scrum.store.state.user.profile;
       },
       userNames: function() {
-        return ecoreleve.store.getters.userNames;
+        return scrum.store.getters.userNames;
       }
     },
     methods: {
       login: function(e) {
-        ecoreleve.store.dispatch('userLogin', {
+        scrum.store.dispatch('userLogin', {
           firstName: 'Vincent',
           lastName: 'B.',
         });

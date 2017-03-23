@@ -272,3 +272,20 @@
 
 
     </html>
+
+    <script type="text/javascript">
+    // disable button by default
+
+
+      $(function() {
+          jQuery.fn.extend({
+              disable: function(state) {
+                  return this.each(function() {
+                      this.disabled = state;
+                  });
+              }
+          });
+
+         $('button').disable(true); // true = disabled false= enabled
+      });
+    </script>

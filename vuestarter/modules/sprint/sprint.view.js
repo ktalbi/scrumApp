@@ -1,8 +1,10 @@
-var ecoreleve = ecoreleve || {};
 
-ecoreleve.sprints = function(resolve, reject) {
+
+var scrum = scrum || {};
+
+scrum.sprints = function(resolve, reject) {
   resolve({
-    template: ecoreleve.templates['sprint/sprints'],
+    template: scrum.templates['sprint/sprints'],
     data: function(){
       return {
         sprints: []
@@ -10,7 +12,7 @@ ecoreleve.sprints = function(resolve, reject) {
     },
     created: function() {
       var self = this;
-      axios.get('http://localhost:8082/sprints')
+      axios.get('http://localhost:8080/sprints')
         .then(function(response) {
           self.sprints = response.data;
         });
@@ -18,9 +20,14 @@ ecoreleve.sprints = function(resolve, reject) {
   })
 };
 
-ecoreleve.sprint = function(resolve, reject) {
+
+
+
+
+
+scrum.sprint = function(resolve, reject) {
   resolve({
-    template: ecoreleve.templates['sprint/sprint'],
+    template: scrum.templates['sprint/sprint'],
     props: ['id'],
     data: function(){
       return {
@@ -30,7 +37,7 @@ ecoreleve.sprint = function(resolve, reject) {
     created: function() {
       var self = this;
       var id = this.$route.params.id;
-      axios.get('http://localhost:8082/sprints/'+id)
+      axios.get('http://localhost:8080/sprints/'+id)
         .then(function(response) {
           self.sprint = response.data;
         });
@@ -42,3 +49,19 @@ ecoreleve.sprint = function(resolve, reject) {
     }
   })
 };
+
+// date time picker
+
+
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });

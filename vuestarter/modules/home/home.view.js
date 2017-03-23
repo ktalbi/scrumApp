@@ -1,7 +1,7 @@
-var ecoreleve = ecoreleve || {};
+var scrum = scrum || {};
 
-ecoreleve.home = function(resolve, reject) {
+scrum.home = function(resolve, reject) {
   resolve({
-    template: ecoreleve.templates['home/home']
+    template: scrum.templates['home/home']
   })
 };

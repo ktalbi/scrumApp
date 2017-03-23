@@ -17,6 +17,7 @@
         <li>
           <router-link :to="{name: 'home'}">Go to Home</router-link>
           <router-link :to="{name: 'sprints'}">Go to Sprints</router-link>
+
         </li>
       </ul>
     </nav>
@@ -31,14 +32,18 @@
   <script src="vendor/vuex.js"></script>
   <script src="vendor/vue-params.js"></script>
   <script src="vendor/vue-i18next.js"></script>
+  <script src="vendor/jquery-3.1.1.min.js"></script>
+  <script src="vendor/vue-datetime-picker.js"></script>
+  <script src="vendor/moment.min.js"></script>
 
   <script src="modules/app/app.js"></script>
   <script src="modules/user/user.store.js"></script>
   <script src="modules/home/home.view.js"></script>
   <script src="modules/sprint/sprint.view.js"></script>
 
+
   <script>
-    ecoreleve.init();
+    scrum.init();
   </script>
 </body>
 

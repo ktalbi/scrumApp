@@ -7,6 +7,7 @@ if( isset($_SESSION['user_id']) ){
 }
 
 //require 'database.php';
+
 require '../config/boot.php';
 
 if(!empty($_POST['email']) && !empty($_POST['password'])):
@@ -21,10 +22,10 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 	if(count($results) > 0 && password_verify($_POST['password'], $results['password']) && ($results['role'] == "admin")) {
 
 
-		header("Location: ../admin/page4.php");
+		header("Location: ../admin/index.php");
 
 	} else if (($results['role'] == "user")) {
-		header("Location: ../user/page4.php");
+		header("Location: ../user/index.php");
 
 	} else if (($results['role'] == "NULL")) {
 	  $message = 'Privilèges non définis';

@@ -1,6 +1,6 @@
-var ecoreleve = ecoreleve || {};
+var scrum = scrum || {};
 
-ecoreleve.storeUser = {
+scrum.storeUser = {
   state: {
     profile: {}
   },

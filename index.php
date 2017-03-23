@@ -1,24 +1,3 @@
-<?php
-
-session_start();
-
-//require 'login/database.php';
-require 'config/boot.php';
-
-if( isset($_SESSION['user_id']) ){
-
-	$records = $pdo->prepare('SELECT * FROM users WHERE id = :id' );
-	$records->bindParam(':id', $_SESSION['user_id']);
-	$records->execute();
-	$results = $records->fetch(PDO::FETCH_ASSOC);
-
-	$user = NULL;
-
-	if( count($results) > 0){
-		$user = $results;
-	}
-}
-?>
 
 <!DOCTYPE html>
 <html>
@@ -47,3 +26,25 @@ if( isset($_SESSION['user_id']) ){
 
 </body>
 </html>
+
+<?php
+
+session_start();
+
+//require 'login/database.php';
+require 'config/boot.php';
+
+if( isset($_SESSION['user_id']) ){
+
+	$records = $pdo->prepare('SELECT * FROM users WHERE id = :id' );
+	$records->bindParam(':id', $_SESSION['user_id']);
+	$records->execute();
+	$results = $records->fetch(PDO::FETCH_ASSOC);
+
+	$user = NULL;
+
+	if( count($results) > 0){
+		$user = $results;
+	}
+}
+?>
