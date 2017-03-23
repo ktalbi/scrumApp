@@ -2,6 +2,7 @@
 
 var scrum = scrum || {};
 
+
 scrum.sprints = function(resolve, reject) {
   resolve({
     template: scrum.templates['sprint/sprints'],
@@ -19,8 +20,6 @@ scrum.sprints = function(resolve, reject) {
     }
   })
 };
-
-
 
 
 
@@ -49,19 +48,3 @@ scrum.sprint = function(resolve, reject) {
     }
   })
 };
-
-// date time picker
-
-
-    $(function () {
-        $('#datetimepicker6').datetimepicker();
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false //Important! See issue #1075
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });
-    });

@@ -7,10 +7,25 @@ Vue.use(VueI18Next);
 
 
 
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+
+
+
 scrum.init = function() {
   //TODO calculate locale, load translations JSON
   //Call scrum.start() when every async things are complete (translations, templates, ...)
   //What about change locale at runtime ?
+
+
+
 
   Vue.params.i18nextLanguage = "en";
   i18next.init({
@@ -31,7 +46,7 @@ scrum.init = function() {
     }
   });
 
-  var templateNames = ['home/home', 'sprint/sprints', 'sprint/sprint'];
+  var templateNames = ['home/home', 'sprint/sprints', 'sprint/sprint', 'hours/hours', 'charts/charts'];
   scrum.templates = {};
   _.forEach(templateNames, function(templateName) {
     axios.get('./modules/' + templateName + '.tpl.html')
@@ -59,6 +74,14 @@ scrum.start = function() {
       path: '/sprints/:id',
       props: true,
       component: scrum.sprint
+    }, {
+      name: 'hours',
+      path: '/hours',
+      component: scrum.hours
+    }, {
+      name: 'charts',
+      path: '/charts',
+      component: scrum.charts
     }]
   });
   scrum.app = new Vue({
