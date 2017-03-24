@@ -1,0 +1,10 @@
+<div>
+  <h2>Sprints {{ sprints.length }}</h2>
+
+  <ul>
+    <li v-for="sprint in sprints">
+      <router-link :to="{name: 'sprint', params: {id: sprint.id}}">sprint {{ sprint.numero }} - id: {{ sprint.id }}</router-link>
+    </li>
+</ul>
+
+</div>

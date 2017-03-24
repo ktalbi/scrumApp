@@ -1,0 +1,20 @@
+/* Navigation */
+body {
+	background: url('snow.jpg') fixed center center no-repeat;
+	background-size: cover;
+}
+.day:hover{
+    background-color:lightblue;
+    cursor:pointer;
+}
+.bg{
+    background-color:white;
+}
+
+.day.active
+{
+    color:blue;
+}
+.nav {
+     background-color:white;
+}
