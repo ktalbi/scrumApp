@@ -32,6 +32,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 // Json WebToken
 
 //  config for security jwt
+
 $app['security.jwt'] = array(
   'secret_key' => '',
   'life_time'  => 86400,  // token valable 24 heures.
@@ -46,6 +47,9 @@ $app['security.jwt'] = array(
 $app['users'] = function () use ($app) {
     return new UserProvider($app['db']);
 };
+
+
+
 
 //  config for silex security
 

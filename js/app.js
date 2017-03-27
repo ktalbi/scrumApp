@@ -2,40 +2,6 @@
 
 let ready = function() {
 
-        // disable button by default
-
-
-        /*  $(function() {
-              jQuery.fn.extend({
-                  disable: function(state) {
-                      return this.each(function() {
-                          this.disabled = state;
-                      });
-                  }
-              });
-
-             $('button').disable(false); // true = disabled false= enabled
-          });*/
-
-
-        /*  $.getJSON("../login/login.php", function() {
-
-
-                  if (credentials === "admin") {
-
-                $('button').disable(false); // true = disabled false= enabled
-
-                }
-                 else {
-                     $('button').disable(true); // true = disabled false= enabled
-                 }
-
-            });
-
-                            type hidden?
-            */
-
-
 
         //populate the Drop Down List
 
@@ -47,12 +13,6 @@ let ready = function() {
                         );
                     });
                 });
-
-
-
-
-
-
 
 
 

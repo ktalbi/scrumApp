@@ -199,6 +199,7 @@
               }
           });
 
-         $('button').disable(true); // true = disabled false= enabled
+       $('button').disable(true); // true = disabled false= enabled
+        //  $('button').hide();
       });
     </script>
