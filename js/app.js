@@ -5,18 +5,10 @@ let ready = function() {
 
         //populate the Drop Down List
 
-        $.getJSON('../admin/page2.php', function(data) {
-                    $.each(data.sprint_array, function(key, value) {
-                        $("#test").append(
-                            "<option value=" + value.id + ">" + value.numero + "</option>"
-
-                        );
-                    });
-                });
-
 
 
                     //Set the active class for tab with page name (from header.php )
+
                     $(document).ready(function() {
                         var url = window.location.href;
                         var array = url.split('/');
@@ -134,7 +126,9 @@ let ready = function() {
 
 
                     /*from page2 */
-                    // script pour transformer la table bootstrap en datable bootstrap et avoir le mode de trie possible
+                    
+    // script pour transformer la table bootstrap en datable bootstrap et avoir le mode de trie possible
+
                     $(document).ready(function() {
                         $('#tomlabonnenote').DataTable();
                     });
