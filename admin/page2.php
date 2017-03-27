@@ -130,8 +130,10 @@
                                 echo "<thead>";
                                  echo " <tr>";
                                     echo "<th>Employé</th>";
-                                   echo " <th>Projet</th>";
-                                   echo " <th>Heure(s)</th>";
+                                    echo " <th>Projet</th>";
+                                    echo " <th>Heure(s)</th>";
+                                    echo "<th>MaJ</th>";
+                                    echo " <th>Supprimer</th>";                           
                                 echo "  </tr>";
                               echo "  </thead>";
                               echo "  <tbody>";

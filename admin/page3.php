@@ -138,14 +138,17 @@
                                 <!-- ///  AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                                 <?php
 
-                                $reponse = $pdo->query('select  sprint.id as Sprint,
+                                $reponse = $pdo->query('select
+                                sprint.id as Sprint,
+                                id as id,
                                 heuresdescendues.heure as NbHeure,
                                 heuresdescendues.DateDescendu as date,
-                                projet.nom as projet, employe.prenom as employe
+                                projet.nom as projet,
+                                employe.prenom as employe
                                 FROM heuresdescendues
-                                inner JOIN employe ON heuresdescendues.id_Employe = employe.id
-                                INNER JOIN projet on projet.id = heuresdescendues.id_Projet
-                                INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
+                                INNER JOIN employe ON heuresdescendues.id_Employe = employe.id
+                                INNER JOIN projet ON projet.id = heuresdescendues.id_Projet
+                                INNER JOIN sprint ON sprint.id = heuresdescendues.id_Sprint
                                 WHERE id_sprint=(SELECT max(id) FROM sprint)
                                 ORDER BY heuresdescendues.id desc');
 
@@ -164,6 +167,12 @@
                                         echo "  <td>";
                                         echo  $donnees['date'];
                                         echo "  </td>";
+                                          echo "<td>";
+                                          echo "<button onclick=\"GetUserDetails('.$donnees['id'].')\" class="btn btn-warning\">Update</button>";
+                                          echo "</td>";
+                                          echo "<td>";
+                                          echo"<button onclick=\"DeleteUser('.$donnees['id'].')\" class=\"btn btn-danger\">Delete</button>";
+                                          echo"</td>";
                                         echo "  </tr>";
                                 }
 
@@ -196,11 +205,14 @@
                                 <?php
 
 
-                                    $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure, heuresdescendues.DateDescendu as date
+                                    $reponse = $pdo->query('select
+                                    sprint.id as Sprint,
+                                    sum(heuresdescendues.heure) as totHeure,
+                                    heuresdescendues.DateDescendu as date
                                     FROM heuresdescendues
-                                    inner JOIN employe ON heuresdescendues.id_Employe = employe.id
+                                    INNER JOIN employe ON heuresdescendues.id_Employe = employe.id
                                     INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
-                                    where id_sprint=(SELECT max(id) FROM sprint)
+                                    WHERE id_sprint=(SELECT max(id) FROM sprint)
                                     GROUP BY sprint.id, heuresdescendues.DateDescendu');
 
                                     while ($donnees = $reponse->fetch())
@@ -237,11 +249,13 @@
                                 <?php
 
 
-                                $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure
+                                $reponse = $pdo->query('select
+                                        sprint.id as Sprint,
+                                        sum(heuresdescendues.heure) as totHeure
                                         FROM heuresdescendues
-                                        inner JOIN employe ON heuresdescendues.id_Employe = employe.id
+                                        INNER JOIN employe ON heuresdescendues.id_Employe = employe.id
                                         INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
-                                        where id_sprint=(SELECT max(id) FROM sprint)
+                                        WHERE id_sprint=(SELECT max(id) FROM sprint)
                                         GROUP BY sprint.id');
 
                                 while ($donnees = $reponse->fetch())
