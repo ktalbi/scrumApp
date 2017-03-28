@@ -126,16 +126,16 @@
                              INNER JOIN sprint ON sprint.id = attribution.id_Sprint where id_sprint=(SELECT max(id) FROM sprint)
                              ORDER BY attribution.id DESC');
 
-                              echo "<table id=\"tomlabonnenote\" class=\"table table-striped table-bordered\">";
+                              echo "<table id=\"tomlabonnenote\" class=\"table table-striped\">";
                                 echo "<thead>";
                                  echo " <tr>";
                                     echo "<th>Employé</th>";
                                     echo " <th>Projet</th>";
                                     echo " <th>Heure(s)</th>";
-                                    echo "<th>MaJ</th>";
-                                    echo " <th>Supprimer</th>";                           
-                                echo "  </tr>";
-                              echo "  </thead>";
+                                    echo "<th>Editer</th>";
+                                    echo " <th>Supprimer</th>";
+                                 echo "  </tr>";
+                               echo "  </thead>";
                               echo "  <tbody>";
 
                             while ($donnees = $reponse->fetch())
@@ -150,7 +150,18 @@
                                 echo "  <td>";
                                 echo  $donnees['NbHeure'];
                                 echo "  </td>";
-                                echo "  </tr>";
+
+                                echo "<td>";
+
+                                 echo"<button class = \"crudedit \">Editer</button>";
+                                  echo "</td>";
+                                  echo "<td>";
+
+                               echo"<button  class = \"crudelete \">Supprimer</button>";
+                                  echo"</td>";
+                                  echo "  </tr>";
+
+
                             }
                                 echo "  </tbody>";
                             $reponse->closeCursor();

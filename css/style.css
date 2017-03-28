@@ -2,19 +2,43 @@
 body {
 	background: url('snow.jpg') fixed center center no-repeat;
 	background-size: cover;
+	width: 100%;
+	color: white;
 }
-.day:hover{
+.day:hover {
     background-color:lightblue;
     cursor:pointer;
 }
-.bg{
-    background-color:white;
-}
-
 .day.active
 {
     color:blue;
 }
 .nav {
-     background-color:white;
+     background-color: transparent;
+}
+.nav  a {
+     color: white;
+		 font-weight: bold;
+
+}
+.datetimepicker {
+	background-color: black;
+}
+.table-striped > tbody > tr:nth-child(odd) {
+   background-color: transparent;
+}
+.table-striped > tbody > tr:nth-child(even) {
+	background-color: ;
+}
+.crudedit {
+	background-color: #0098cb;
+	border-radius: 5px;
+}
+.crudelete {
+	background-color: rgb(237, 34, 34);
+	border-radius: 5px;
+}
+.center_form {
+    margin: 0 auto;
+    width:80%;
 }

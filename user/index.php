@@ -1,4 +1,4 @@
-    <html class="bg">
+    <html>
         <?php include('../admin/header.php');
               include('../config/boot.php');
 
@@ -10,7 +10,7 @@
 
                 </br></br></br></br>
 
-        <form method="POST" role="form" action="../InsertionBdd\AjoutSprint.php">
+        <form method="POST" role="form" action="../InsertionBdd\AjoutSprint.php" class="center_form">
 
             <div class="container">
 

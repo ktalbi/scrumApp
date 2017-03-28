@@ -52,7 +52,7 @@ endif;
 	<?php endif; ?>
 
 	<h1>Connexion</h1>
-	<span>ou <a href="register.php">Inscription</a></span>
+	<span>ou <a href="register.php" class="logcolor">Inscription</a></span>
 
 	<form action="login.php" method="POST">
 

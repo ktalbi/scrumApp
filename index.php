@@ -19,8 +19,8 @@
 	<?php else: ?>
 
 		<h1>Connexion</h1>
-		<a href="login/login.php">Connexion</a> ou
-		<a href="login/register.php">Inscription</a>
+		<a href="login/login.php" class="logcolor">Connexion</a> Ou
+		<a href="login/register.php" class="logcolor">Inscription</a>
 
 	<?php endif; ?>
 

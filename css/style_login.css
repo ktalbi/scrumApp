@@ -1,10 +1,12 @@
-body{
+html, body{
 	margin:0px;
 	padding:0px;
 	font-family: 'Comfortaa', cursive;
 	text-align:center;
-	background: url('aurora.jpg') fixed center center no-repeat;
+	width: auto;
+	background: url('snow.jpg') fixed center center no-repeat;
 	background-size: cover;
+	color: white;
 }
 
 input[type="text"], input[type="password"]{
@@ -31,4 +33,7 @@ input[type="submit"]{
 
 input[type="submit"]:hover{
 	background:#00b8eb;
+}
+.logcolor {
+	color: white;
 }

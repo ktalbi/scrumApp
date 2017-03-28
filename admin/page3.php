@@ -122,7 +122,7 @@
 
                     <h4>Heures descendues par Employé(e), par Projet</h4>
 
-                        <table id="tomlabonnenote" class="table table-striped table-bordered">
+                        <table id="tomlabonnenote" class="table table-striped">
 
                             <thead>
                                 <tr>
@@ -130,6 +130,8 @@
                                     <th>Projet</th>
                                     <th>Heure(s)</th>
                                     <th>Date</th>
+                                    <th>Editer</th>
+                                    <th>Supprimer</th>
                                 </tr>
                             </thead>
 
@@ -140,7 +142,7 @@
 
                                 $reponse = $pdo->query('select
                                 sprint.id as Sprint,
-                                id as id,
+
                                 heuresdescendues.heure as NbHeure,
                                 heuresdescendues.DateDescendu as date,
                                 projet.nom as projet,
@@ -167,13 +169,15 @@
                                         echo "  <td>";
                                         echo  $donnees['date'];
                                         echo "  </td>";
-                                          echo "<td>";
-                                          echo "<button onclick=\"GetUserDetails('.$donnees['id'].')\" class="btn btn-warning\">Update</button>";
+                                        echo "<td>";
+
+                                               echo"<button class = \"crudedit \">Editer</button>";
                                           echo "</td>";
                                           echo "<td>";
-                                          echo"<button onclick=\"DeleteUser('.$donnees['id'].')\" class=\"btn btn-danger\">Delete</button>";
+
+                                             echo"<button class = \"crudelete \">Editer</button>";
                                           echo"</td>";
-                                        echo "  </tr>";
+                                          echo "  </tr>";
                                 }
 
                                 $reponse->closeCursor();
@@ -187,7 +191,7 @@
                 </div>
 
                 <!--Total heures descendues par jour-->
-                <div class="col-sm-3"  style="background-color: white;">
+                <div class="col-sm-3">
 
                     <h4>Heures descendues par jours</h4>
 
