@@ -117,7 +117,7 @@
                             INNER JOIN sprint ON sprint.id = attribution.id_Sprint where id_sprint=(SELECT max(id) FROM sprint)
                             ORDER BY attribution.id DESC');
 
-                              echo "<table id=\"tomlabonnenote\" class=\"table table-striped\">";
+                              echo "<table id=\"pagination\" class=\"table table-striped\">";
                                 echo "<thead>";
                                  echo " <tr>";
                                     echo "<th>Employé</th>";

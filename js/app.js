@@ -126,12 +126,17 @@ let ready = function() {
 
 
                     /*from page2 */
-                    
-    // script pour transformer la table bootstrap en datable bootstrap et avoir le mode de trie possible
 
-                    $(document).ready(function() {
-                        $('#tomlabonnenote').DataTable();
-                    });
+                    // script de pagination
+
+                      //  $('#pagination').dataTable();
+                      $(document).ready(function(){
+                      $('#pagination').DataTable();
+                  });
+
+
+
+
 
                     // page4
 

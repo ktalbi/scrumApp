@@ -1,12 +1,18 @@
+
+
 html, body{
 	margin:0px;
 	padding:0px;
-	font-family: 'Comfortaa', cursive;
 	text-align:center;
 	width: auto;
 	background: url('snow.jpg') fixed center center no-repeat;
 	background-size: cover;
 	color: white;
+	font-size: 25px;
+}
+.accueil {
+	font-size: 55px;
+  font-family: arial;
 }
 
 input[type="text"], input[type="password"]{

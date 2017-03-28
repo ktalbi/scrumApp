@@ -122,7 +122,7 @@
 
                     <h4>Heures descendues par Employé(e), par Projet</h4>
 
-                        <table id="tomlabonnenote" class="table table-striped">
+                        <table id="pagination" class="table table-striped">
 
                             <thead>
                                 <tr>
@@ -172,7 +172,7 @@
                                          echo "</td>";
                                          echo "<td>";
 
-                                      echo"<button class = \"crudelete \">Editer</button>";
+                                      echo"<button class = \"crudelete \">Supprimer</button>";
                                          echo"</td>";
 
                                         echo "  </tr>";

@@ -9,6 +9,7 @@ body {
     background-color:lightblue;
     cursor:pointer;
 }
+
 .day.active
 {
     color:blue;

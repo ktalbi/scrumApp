@@ -122,7 +122,7 @@
 
                     <h4>Heures descendues par Employé(e), par Projet</h4>
 
-                        <table id="tomlabonnenote" class="table table-striped">
+                        <table id="pagination" class="table table-striped">
 
                             <thead>
                                 <tr>
