@@ -41,8 +41,8 @@ if( isset($_SESSION['user_id']) ){
 	<?php else: ?>
 
 		<h1>Scrum Manager</h1>
-		<a href="login.php">Connexion</a> ou
-		<a href="register.php">Inscription</a>
+		<a href="login.php">Connexion</a>
+
 
 
 	<?php endif; ?>

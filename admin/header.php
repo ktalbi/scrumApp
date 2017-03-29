@@ -22,10 +22,10 @@
 
 <ul class="nav nav-tabs nav-justified">
   <li class="active"><a href="index">Créer Sprint</a></li>
-  <li><a href="page2.php">Attribution Heures</a></li>
+  <li ><a href="page2.php">Attribution Heures</a></li>
   <li><a href="page3.php">Heures Descendues</a></li>
   <li><a href="page4.php">Burndownchart</a></li>
-  <li><a href="../login/logout.php">Déconnexion</a></li>
+  <li><a href="../login/index.php">Login</a></li>
 </ul>
 
 
@@ -38,6 +38,8 @@
 <script src="../js/bootstrap/dataTables.bootstrap.min.js"></script>
 <script src="../js/highcharts/highcharts.js"></script>
 <script src="../js/highcharts/exporting.js"></script>
+<script src="../js/highcharts/exporting.js"></script>
+
 <script src="../js/app.js"></script>
 
 </body>

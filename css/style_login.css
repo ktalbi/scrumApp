@@ -43,3 +43,9 @@ input[type="submit"]:hover{
 .logcolor {
 	color: white;
 }
+a:active {
+    color: white;
+}
+a:visited {
+    color:white;
+}

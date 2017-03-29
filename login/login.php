@@ -22,10 +22,10 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 	if(count($results) > 0 && password_verify($_POST['password'], $results['password']) && ($results['role'] == "admin")) {
 
 
-		header("Location: ../admin/index.php");
+		header("Location: ../admin/page4.php");
 
 	} else if (($results['role'] == "user")) {
-		header("Location: ../user/index.php");
+		header("Location: ../user/page4.php");
 
 	} else if (($results['role'] == "NULL")) {
 	  $message = 'Privilèges non définis';
@@ -52,7 +52,6 @@ endif;
 	<?php endif; ?>
 
 	<h1>Connexion</h1>
-	<span>ou <a href="register.php" class="logcolor">Inscription</a></span>
 
 	<form action="login.php" method="POST">
 
