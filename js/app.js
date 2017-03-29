@@ -135,6 +135,14 @@ let ready = function() {
                   });
 
 
+                  // script associated to modal for updating hours
+
+
+
+
+
+
+
 
 
 

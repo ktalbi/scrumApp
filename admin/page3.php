@@ -175,7 +175,7 @@
                                           echo "</td>";
                                           echo "<td>";
 
-                                             echo"<button class = \"crudelete \">Editer</button>";
+                                             echo"<button class = \"crudelete \">Supprimer</button>";
                                           echo"</td>";
                                           echo "  </tr>";
                                 }
