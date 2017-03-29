@@ -1,7 +1,7 @@
     <html class="bg">
 
         <?php
-            include('../admin/header.php');
+            include('header.php');
             include('../config/boot.php');
             ?>
 

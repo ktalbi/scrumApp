@@ -1,6 +1,6 @@
     <html>
 
-        <?php include('../admin/header.php');
+        <?php include('header.php');
               include('../config/boot.php');
         ?>
 
