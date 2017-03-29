@@ -122,7 +122,7 @@
 
                     <h4>Heures descendues par Employé(e), par Projet</h4>
 
-                        <table id="tomlabonnenote" class="table table-striped table-bordered">
+                        <table id="pagination" class="table table-striped">
 
                             <thead>
                                 <tr>
@@ -130,6 +130,8 @@
                                     <th>Projet</th>
                                     <th>Heure(s)</th>
                                     <th>Date</th>
+                                    <th>Editer</th>
+                                    <th>Supprimer</th>
                                 </tr>
                             </thead>
 
@@ -138,14 +140,17 @@
                                 <!-- ///  AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                                 <?php
 
-                                $reponse = $pdo->query('select  sprint.id as Sprint,
+                                $reponse = $pdo->query('select
+                                sprint.id as Sprint,
+
                                 heuresdescendues.heure as NbHeure,
                                 heuresdescendues.DateDescendu as date,
-                                projet.nom as projet, employe.prenom as employe
+                                projet.nom as projet,
+                                employe.prenom as employe
                                 FROM heuresdescendues
-                                inner JOIN employe ON heuresdescendues.id_Employe = employe.id
-                                INNER JOIN projet on projet.id = heuresdescendues.id_Projet
-                                INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
+                                INNER JOIN employe ON heuresdescendues.id_Employe = employe.id
+                                INNER JOIN projet ON projet.id = heuresdescendues.id_Projet
+                                INNER JOIN sprint ON sprint.id = heuresdescendues.id_Sprint
                                 WHERE id_sprint=(SELECT max(id) FROM sprint)
                                 ORDER BY heuresdescendues.id desc');
 
@@ -164,7 +169,15 @@
                                         echo "  <td>";
                                         echo  $donnees['date'];
                                         echo "  </td>";
-                                        echo "  </tr>";
+                                        echo "<td>";
+
+                                               echo"<button class = \"crudedit \">Editer</button>";
+                                          echo "</td>";
+                                          echo "<td>";
+
+                                             echo"<button class = \"crudelete \">Supprimer</button>";
+                                          echo"</td>";
+                                          echo "  </tr>";
                                 }
 
                                 $reponse->closeCursor();
@@ -178,7 +191,7 @@
                 </div>
 
                 <!--Total heures descendues par jour-->
-                <div class="col-sm-3"  style="background-color: white;">
+                <div class="col-sm-3">
 
                     <h4>Heures descendues par jours</h4>
 
@@ -196,11 +209,14 @@
                                 <?php
 
 
-                                    $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure, heuresdescendues.DateDescendu as date
+                                    $reponse = $pdo->query('select
+                                    sprint.id as Sprint,
+                                    sum(heuresdescendues.heure) as totHeure,
+                                    heuresdescendues.DateDescendu as date
                                     FROM heuresdescendues
-                                    inner JOIN employe ON heuresdescendues.id_Employe = employe.id
+                                    INNER JOIN employe ON heuresdescendues.id_Employe = employe.id
                                     INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
-                                    where id_sprint=(SELECT max(id) FROM sprint)
+                                    WHERE id_sprint=(SELECT max(id) FROM sprint)
                                     GROUP BY sprint.id, heuresdescendues.DateDescendu');
 
                                     while ($donnees = $reponse->fetch())
@@ -237,11 +253,13 @@
                                 <?php
 
 
-                                $reponse = $pdo->query('select  sprint.id as Sprint, sum(heuresdescendues.heure) as totHeure
+                                $reponse = $pdo->query('select
+                                        sprint.id as Sprint,
+                                        sum(heuresdescendues.heure) as totHeure
                                         FROM heuresdescendues
-                                        inner JOIN employe ON heuresdescendues.id_Employe = employe.id
+                                        INNER JOIN employe ON heuresdescendues.id_Employe = employe.id
                                         INNER JOIN sprint on sprint.id = heuresdescendues.id_Sprint
-                                        where id_sprint=(SELECT max(id) FROM sprint)
+                                        WHERE id_sprint=(SELECT max(id) FROM sprint)
                                         GROUP BY sprint.id');
 
                                 while ($donnees = $reponse->fetch())

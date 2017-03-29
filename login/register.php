@@ -44,7 +44,7 @@ endif;
 	<?php endif; ?>
 
 	<h1>Inscription</h1>
-	<span>ou <a href="login.php">Connexion</a></span>
+	<span>ou <a href="login.php" class="logcolor">Connexion</a></span>
 
 	<form action="register.php" method="POST">
 

@@ -126,14 +126,16 @@
                              INNER JOIN sprint ON sprint.id = attribution.id_Sprint where id_sprint=(SELECT max(id) FROM sprint)
                              ORDER BY attribution.id DESC');
 
-                              echo "<table id=\"tomlabonnenote\" class=\"table table-striped table-bordered\">";
+                              echo "<table id=\"pagination\" class=\"table table-striped\">";
                                 echo "<thead>";
                                  echo " <tr>";
                                     echo "<th>Employé</th>";
-                                   echo " <th>Projet</th>";
-                                   echo " <th>Heure(s)</th>";
-                                echo "  </tr>";
-                              echo "  </thead>";
+                                    echo " <th>Projet</th>";
+                                    echo " <th>Heure(s)</th>";
+                                    echo "<th>Editer</th>";
+                                    echo " <th>Supprimer</th>";
+                                 echo "  </tr>";
+                               echo "  </thead>";
                               echo "  <tbody>";
 
                             while ($donnees = $reponse->fetch())
@@ -148,7 +150,18 @@
                                 echo "  <td>";
                                 echo  $donnees['NbHeure'];
                                 echo "  </td>";
-                                echo "  </tr>";
+
+                                echo "<td>";
+
+                                 echo"<button class = \"crudedit \">Editer</button>";
+                                  echo "</td>";
+                                  echo "<td>";
+
+                               echo"<button  class = \"crudelete \">Supprimer</button>";
+                                  echo"</td>";
+                                  echo "  </tr>";
+
+
                             }
                                 echo "  </tbody>";
                             $reponse->closeCursor();
@@ -192,6 +205,44 @@
                 </div>
 
             </div>
+
+
+
+<!-- Modal - Update User details -->
+<div class="modal fade" id="update_user_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Update</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="update_first_name">First Name</label>
+                    <input type="text" id="update_first_name" placeholder="First Name" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="update_last_name">Last Name</label>
+                    <input type="text" id="update_last_name" placeholder="Last Name" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="update_email">Email Address</label>
+                    <input type="text" id="update_email" placeholder="Email Address" class="form-control"/>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()" >Save Changes</button>
+                <input type="hidden" id="hidden_user_id">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal -->
 
         </div>
 

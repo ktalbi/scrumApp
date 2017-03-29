@@ -5,6 +5,7 @@
     <meta charset="utf-8">
 <link rel="stylesheet" href="../css/bootstrap/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="../css/bootstrap/bootstrap.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
 <link rel="stylesheet" href="../css/style.css" />
 <link rel="shortcut icon" href="favicon.ico"> <!-- fix the favicon error 404 -->
 

@@ -117,12 +117,14 @@
                             INNER JOIN sprint ON sprint.id = attribution.id_Sprint where id_sprint=(SELECT max(id) FROM sprint)
                             ORDER BY attribution.id DESC');
 
-                              echo "<table id=\"tomlabonnenote\" class=\"table table-striped table-bordered\">";
+                              echo "<table id=\"pagination\" class=\"table table-striped\">";
                                 echo "<thead>";
                                  echo " <tr>";
                                     echo "<th>Employé</th>";
                                    echo " <th>Projet</th>";
                                    echo " <th>Heure(s)</th>";
+                                   echo "<th>Editer</th>";
+                                   echo " <th>Supprimer</th>";
                                 echo "  </tr>";
                               echo "  </thead>";
                               echo "  <tbody>";
@@ -139,6 +141,14 @@
                                 echo "  <td>";
                                 echo  $donnees['NbHeure'];
                                 echo "  </td>";
+                                echo "<td>";
+
+                                echo"<button class = \"crudedit \">Editer</button>";
+                                  echo "</td>";
+                                  echo "<td>";
+
+                                  echo"<button class = \"crudelete \">Supprimer</button>";
+                                  echo"</td>";
                                 echo "  </tr>";
                             }
                                 echo "  </tbody>";
@@ -199,6 +209,7 @@
               }
           });
 
-         $('button').disable(true); // true = disabled false= enabled
+       $('button').disable(true); // true = disabled false= enabled
+        //  $('button').hide();
       });
     </script>
