@@ -25,7 +25,7 @@
   <li ><a href="page2.php">Attribution Heures</a></li>
   <li><a href="page3.php">Heures Descendues</a></li>
   <li><a href="page4.php">Burndownchart</a></li>
-  <li><a href="../login/index.php">Login</a></li>
+  <li><a href="../login/logout.php">Logout</a></li>
 </ul>
 
 
