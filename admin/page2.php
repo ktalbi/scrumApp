@@ -19,6 +19,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
                                         <select id="test" class="form-control"  name="numerosprint">
+                                          <option value=""></option>
                                           <?php  $result = $pdo->query("select id, numero from sprint order by id desc");
 
 
@@ -48,6 +49,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Projet</label>
                                         <select class="form-control"  name="projetid">
+                                          <option value=""></option>
                                             <?php
                                                 $result = $pdo->query("select id, nom from projet order by nom ASC");
 
@@ -68,15 +70,18 @@
                         <div class="row">
                             <div  class="col-sm-11">
                                 <div class="form-group">
+
                                     <?php
                                         $result = $pdo->query("select id, prenom from employe order by prenom ASC");
 
                                         echo "<label for=\"sel1\">Employe</label>";
                                             echo "<select class=\"form-control\"  name=\"employeid\">";
+                                              echo '<option value=""></option>';
                                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                                   unset($id, $nom);
                                                   $id = $row['id'];
                                                   $prenom = $row['prenom'];
+
                                                   echo '<option value="'.$id.'"> ' .$prenom. ' </option>';
                                                 }
                                     ?>
@@ -110,7 +115,7 @@
 
                 </form>
 
-                <div class="col-sm-5">
+                <div class="col-sm-6">
 
                     <h4>Heures attribuée(s) par Employe, par Projet</h4>
 
@@ -172,18 +177,24 @@
 
                 </div>
 
+                       <!-- tableau total des heures attribuées par sprint -->
+
                 <div class="col-sm-3">
+                  <div class="row">
+                    <div class="col-sm-12">
                     <?php
 
-                        $reponse = $pdo->query('select  sprint.numero as Sprint, sum(attribution.heure) as totHeure
-                                    FROM attribution INNER JOIN sprint on sprint.id = attribution.id_Sprint
-                                    where id_sprint=(SELECT max(id) FROM sprint)
-                                    GROUP BY sprint.id');
+                        $reponse = $pdo->query('select
+                          sprint.numero as Sprint,
+                          sum(attribution.heure) as totHeure FROM attribution
+                          INNER JOIN sprint on sprint.id = attribution.id_Sprint
+                          WHERE id_sprint=(SELECT max(id) FROM sprint)
+                          GROUP BY sprint.id');
 
                         echo "<table class=\"table\">";
                                 echo "<thead>";
                                  echo " <tr>";
-                                    echo "<th>Total heures attribués pour le sprint</th>";
+                                    echo "<th>Total heures attribuées pour le sprint</th>";
                                 echo "  </tr>";
                               echo "  </thead>";
                               echo "  <tbody>";
@@ -202,7 +213,13 @@
                         $reponse->closeCursor();
 
                     ?>
+                    </div>
+                    <div class="col-sm-12">
 
+                      
+
+                      </div>
+                  </div>
                 </div>
 
             </div>
@@ -210,6 +227,5 @@
         </div>
 
         </br>
-
 
     </html>

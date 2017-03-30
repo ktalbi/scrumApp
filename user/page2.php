@@ -19,6 +19,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
                                         <select class="form-control"  name="numerosprint">
+                                              <option value=""></option>
                                             <?php
                                             $result = $pdo->query("select id, numero from sprint order by id desc");
 
@@ -41,6 +42,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Projet</label>
                                         <select class="form-control"  name="projetid">
+                                                <option value=""></option>
                                             <?php
                                                 $result = $pdo->query("select id, nom from projet order by nom ASC");
 
@@ -66,6 +68,7 @@
 
                                         echo "<label for=\"sel1\">Employe</label>";
                                             echo "<select class=\"form-control\"  name=\"employeid\">";
+                                                  echo '<option value=""></option>';
                                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                                   unset($id, $nom);
                                                   $id = $row['id'];

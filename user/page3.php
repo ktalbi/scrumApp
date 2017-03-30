@@ -20,6 +20,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
                                         <select class="form-control"  name="numerosprint">
+                                                <option value=""></option>
 
                                             <?php
                                                 $result = $pdo->query("select id, numero from sprint order by id desc");
@@ -42,6 +43,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Employe</label>
                                         <select class="form-control"  name="employeid">
+                                                <option value=""></option>
 
                                                 <?php
                                                     $result = $pdo->query("select id, prenom from employe order by prenom ASC");
@@ -64,6 +66,7 @@
                                <div class="form-group">
                                    <label for="sel1">Projet</label>
                                         <select class="form-control"  name="projetid">
+                                                <option value=""></option>
                                             <?php
 
                                             $result = $pdo->query("select id, nom from projet order by nom ASC");

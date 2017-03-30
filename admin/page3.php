@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
                                         <select class="form-control"  name="numerosprint">
-
+                                        <option value=""></option>
                                             <?php
                                                 $result = $pdo->query("select id, numero from sprint order by id desc");
 
@@ -42,6 +42,7 @@
                                 <div class="form-group">
                                     <label for="sel1">Employe</label>
                                         <select class="form-control"  name="employeid">
+                                                   <option value=""></option>
 
                                                 <?php
                                                     $result = $pdo->query("select id, prenom from employe order by prenom ASC");
@@ -63,7 +64,8 @@
                             <div  class="col-sm-11">
                                <div class="form-group">
                                    <label for="sel1">Projet</label>
-                                        <select class="form-control"  name="projetid">
+                                        <select class="form-control" name="projetid">
+                                              <option value=""></option>
                                             <?php
 
                                             $result = $pdo->query("select id, nom from projet order by nom ASC");
@@ -192,7 +194,8 @@
 
                 <!--Total heures descendues par jour-->
                 <div class="col-sm-3">
-
+                    <div class="row">
+                         <div class="col-sm-12">
                     <h4>Heures descendues par jours</h4>
 
                         <table class="table table-striped table-bordered">
@@ -238,9 +241,66 @@
                             </tbody>
 
                         </table>
+                      </div>
+                       <div class="col-sm-12">
+                        <h4>Heures descendues par projet</h4>
+
+                            <table class="table table-striped table-bordered">
+
+                               <thead>
+                                    <tr>
+                                        <th>Total heures</th>
+                                        <th>Projet</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                              <?php
 
 
+                              $reponse = $pdo->query('select
+                               sprint.id as Sprint,
+                               projet.nom as pnom,
+                               sum(heuresdescendues.heure) as totHeure,
+                               heuresdescendues.id_Projet as idp
+                               FROM heuresdescendues
+                               INNER JOIN sprint ON sprint.id = heuresdescendues.id_Sprint
+                               INNER JOIN projet ON projet.id = heuresdescendues.id_Projet
+                               WHERE id_sprint=(SELECT max(id) FROM sprint)
+                               GROUP BY sprint.id, heuresdescendues.id_Projet');
 
+                        /*     sum(heuresdescendues.heure) as totHeure,
+                               heuresdescendues.id_Projet as idp
+                               FROM heuresdescendues
+                               INNER JOIN sprint ON sprint.id = heuresdescendues.id_Sprint
+                               INNER JOIN projet ON projet.id = heuresdescendues.id_Projet
+                               WHERE id_sprint=(SELECT max(id) FROM sprint)
+                               GROUP BY sprint.id, heuresdescendues.id_Projet'); */
+
+                              while ($donnees = $reponse->fetch())
+                              {
+                                echo "  <tr>";
+                                echo "  <td>";
+                                echo  $donnees['totHeure'];
+                                echo "  </td>";
+                                echo "  <td>";
+                                echo  $donnees['pnom'];
+                                echo "  </td>";
+                                echo "  </tr>";
+                              }
+
+                              $reponse->closeCursor();
+
+                              ?>
+
+                                </tbody>
+
+                            </table>
+                            </div>
+
+
+                     <div class="col-sm-12">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -278,11 +338,10 @@
                             </tbody>
 
                         </table>
-
+                        </div>
+                      </div>
+                   </div>
                 </div>
-
             </div>
-
         </div>
-
     </html>
