@@ -193,10 +193,11 @@
                 </div>
 
                 <!--Total heures descendues par jour-->
+                
                 <div class="col-sm-3">
                     <div class="row">
                          <div class="col-sm-12">
-                    <h4>Heures descendues par jours</h4>
+                    <h4>Heures descendues par jour</h4>
 
                         <table class="table table-striped table-bordered">
 
@@ -270,13 +271,7 @@
                                WHERE id_sprint=(SELECT max(id) FROM sprint)
                                GROUP BY sprint.id, heuresdescendues.id_Projet');
 
-                        /*     sum(heuresdescendues.heure) as totHeure,
-                               heuresdescendues.id_Projet as idp
-                               FROM heuresdescendues
-                               INNER JOIN sprint ON sprint.id = heuresdescendues.id_Sprint
-                               INNER JOIN projet ON projet.id = heuresdescendues.id_Projet
-                               WHERE id_sprint=(SELECT max(id) FROM sprint)
-                               GROUP BY sprint.id, heuresdescendues.id_Projet'); */
+
 
                               while ($donnees = $reponse->fetch())
                               {

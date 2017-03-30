@@ -182,6 +182,58 @@
                 <div class="col-sm-3">
                   <div class="row">
                     <div class="col-sm-12">
+                      <h4>Heures attribuées par projet</h4>
+
+                          <table class="table table-striped table-bordered">
+
+                             <thead>
+                                  <tr>
+                                      <th>Heures attribuées</th>
+                                      <th>Projet</th>
+                                  </tr>
+                              </thead>
+
+                              <tbody>
+
+                            <?php
+
+
+                            $reponse = $pdo->query('select
+                             sprint.id as Sprint,
+                             projet.nom as pnom,
+                             sum(attribution.heure) as totHeure,
+                             attribution.id_Projet as idp
+                             FROM attribution
+                             INNER JOIN sprint ON sprint.id = attribution.id_Sprint
+                             INNER JOIN projet ON projet.id = attribution.id_Projet
+                             WHERE id_sprint=(SELECT max(id) FROM sprint)
+                             GROUP BY sprint.id, attribution.id_Projet');
+
+
+
+                            while ($donnees = $reponse->fetch())
+                            {
+                              echo "  <tr>";
+                              echo "  <td>";
+                              echo  $donnees['totHeure'];
+                              echo "  </td>";
+                              echo "  <td>";
+                              echo  $donnees['pnom'];
+                              echo "  </td>";
+                              echo "  </tr>";
+                            }
+
+                            $reponse->closeCursor();
+
+                            ?>
+
+                              </tbody>
+
+                          </table>
+
+
+                    </div>
+                    <div class="col-sm-12">
                     <?php
 
                         $reponse = $pdo->query('select
@@ -214,11 +266,6 @@
 
                     ?>
                     </div>
-                    <div class="col-sm-12">
-
-                      
-
-                      </div>
                   </div>
                 </div>
 
