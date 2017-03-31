@@ -5,7 +5,7 @@ let ready = function() {
 
     //populate the Drop Down List
 
-
+        var localhost = "localhost:81";
 
     //Set the active class for tab with page name (from header.php )
 
@@ -15,6 +15,16 @@ let ready = function() {
         var lastsegment = array[array.length - 1];
         $('li.active').removeClass('active');
         $('a[href="+lastsegment+"]').parent().addClass('active');
+
+
+        $('#pagination').DataTable();
+
+
+        $( "#sprintIdList" ).change(function() {
+          sprintIdListChanged ();
+        });
+
+
     });
 
 
@@ -132,9 +142,7 @@ let ready = function() {
     // script de pagination
 
     //  $('#pagination').dataTable();
-    $(document).ready(function() {
-        $('#pagination').DataTable();
-    });
+
 
 
     // script associated to modal for updating hours
@@ -151,7 +159,7 @@ let ready = function() {
 
     // Highcharts
 
-    var createChartNEW = function(heures, dates, seuils, sprintou) {
+    function createChartNEW (heures, dates, seuils, sprintou) {
         heures = heures.map(function(x) {
             return parseInt(x, 10);
         });
@@ -199,7 +207,7 @@ let ready = function() {
     };
 
 
-    var localhost = "localhost:8080";
+
 
     /// CHANGER LA VALEUR DE X ( FONCTION APPELEE LORS DE L'APPELLE DE LA FONCTION LORS DE LAPPUIE DU BOUTTON ) ///
     var addNumber = function() {
@@ -221,7 +229,7 @@ let ready = function() {
     };
 
     /// FONCTION POUR RECCUPERER LES DONNEES DEPUIS LE SELECT, LE METTRE DANS LE LIENS DE L'API ET LE METTRE LE RESULTAT DANS LES DIFFERENTES VARIABLE ///
-    var misajour = function() {
+    function misajour() {
         var x = $("#sprintIdList").val();
         var result = getdatafromurlNEW("http://" + localhost + "/scrum/api/www/action/getChart/" + x);
         var heures = result[0];
@@ -238,16 +246,9 @@ let ready = function() {
         var SiErreur = parseInt($("#sprintIdList").val()) + 2;
         $("#sprintIdList").val(addNumber());
 
-        var result = getdatafromurlNEW("http://" + localhost + "/scrum/api/www/action/sprintExist/" + x);
+        getdatafromurlNEW("http://" + localhost + "/scrum/api/www/action/sprintExist/" + x);
 
-        if (result) {
-            misajour();
-        } else //sinon (donc le sprint est nul, il a un soucie)
-        {
-            console.log('Problème sur le sprint à afficher, je vais donc directement au : ', SiErreur);
-            $("#sprintIdList").val(SiErreur);
-            misajour();
-        }
+
 
     };
 
@@ -257,30 +258,26 @@ let ready = function() {
         var SiErreur = parseInt($("#sprintIdList").val()) - 2;
         $("#sprintIdList").val(removenumber());
 
-        var result = getdatafromurlNEW("http://" + localhost + "/scrum/api/www/action/sprintExist/" + x);
-
-
-        if (result) //si le sprint fonctionne
-        {
-            misajour();
-        } else //sinon ( donc le sprint est nul, il a un soucie)
-        {
-            console.log('Problème sur le sprint à afficher, je vais donc directement au : ', $SiErreur);
-            $("#sprintIdList").val(SiErreur);
-            misajour();
-        }
+        checkData("http://" + localhost + "/scrum/api/www/action/sprintExist/" + x);
 
     };
 
     /// FONCTION POUR TRANSFORMER L'URL COMME IL FAUT ///
-    var getdatafromurlNEW = function(myurl) {
+    function getdatafromurlNEW (myurl) {
         var toret = null;
         console.log("getdatafromurlNEW", myurl);
         $.ajax({
             url: myurl,
             async: true,
             success: function(result) {
-                toret = result;
+                if (result) {
+                    misajour();
+                } else //sinon (donc le sprint est nul, il a un soucie)
+                {
+                    console.log('Problème sur le sprint à afficher, je vais donc directement au : ', SiErreur);
+                    $("#sprintIdList").val(SiErreur);
+                    misajour();
+                }
             },
             error: function(xhr) {
                 console.log("error NEW", xhr);
@@ -291,29 +288,62 @@ let ready = function() {
         console.log('coucou', toret)
     };
 
+    function getChartData() {
+        var x = $("#sprintIdList").val();
+        var myurl ="http://" + localhost + "/scrum/api/www/action/getChart/" + x;
+        $.ajax({
+            url: myurl,
+            async: true,
+            success: function(result) {
+                var heures = result[0];
+                var dates = result[1];
+                var seuils = result[2];
+                var sprintou = result[3];
+                createChartNEW(heures, dates, seuils, sprintou);
+                $("#sprintIdList").val(x);
+            },
+            error: function(xhr) {
+                console.log("error NEW", xhr);
+                alert("Le sprint selectionner ne peut être affiché car manque d'info. Veuillez en selectionner un autre. Merci1");
+            }
+        });
+        
+
+
+    }
+    function checkData(myurl){
+
+        $.ajax({
+            url: myurl,
+            async: true,
+            success: function(result) {
+                if (result) {
+                    getChartData();
+                } else //sinon (donc le sprint est nul, il a un soucie)
+                {
+                    console.log('Problème sur le sprint à afficher, je vais donc directement au : ', SiErreur);
+                    $("#sprintIdList").val(SiErreur);
+                    //misajour();
+                }
+            },
+            error: function(xhr) {
+                console.log("error NEW", xhr);
+                alert("Le sprint selectionner ne peut être affiché car manque d'info. Veuillez en selectionner un autre. Merci1");
+            }
+        });
+    }
     //Fonction lorsque l'on choisie un nouveau sprint depuis la liste deroulante
-    var sprintIdListChanged = function() {
+   function sprintIdListChanged () {
 
         var x = $("#sprintIdList").val();
 
-        var result = getdatafromurlNEW("http://" + localhost + "/scrum/api/www/action/sprintExist/" + x);
+        checkData("http://" + localhost + "/scrum/api/www/action/sprintExist/" + x);
 
-        if (result) {
-            misajour();
-        } else {
-            alert("Le sprint selectionner ne peut être affiché car manque d'info. Veuillez en selectionner un autre. Merci2.");
-            x = PremierSprint;
-            $("#sprintIdList").val(x);
-            misajour();
-        }
 
-    };
+}
 
-    var result = getdatafromurlNEW("http://" + localhost + "/scrum/api/www/action/getChart/0");
 
-    if (result != null) {
-        misajour();
-    }
+
 
 
 
