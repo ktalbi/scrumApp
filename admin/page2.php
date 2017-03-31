@@ -119,7 +119,7 @@
 
                     <h4>Heures attribuée(s) par Employe, par Projet</h4>
 
-                    <!-- /// AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
+                    <!-- /// test AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                         <?php
 
                             $reponse = $pdo->query('select
