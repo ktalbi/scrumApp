@@ -19,6 +19,9 @@
                                 <div class="form-group">
                                     <label for="sel1">Sprint n°</label>
                                         <select id="test" class="form-control"  name="numerosprint">
+
+                                          <option value=""></option>
+
                                           <?php  $result = $pdo->query("select id, numero from sprint order by id desc");
 
 
@@ -48,6 +51,9 @@
                                 <div class="form-group">
                                     <label for="sel1">Projet</label>
                                         <select class="form-control"  name="projetid">
+
+                                          <option value=""></option>
+
                                             <?php
                                                 $result = $pdo->query("select id, nom from projet order by nom ASC");
 
@@ -68,11 +74,17 @@
                         <div class="row">
                             <div  class="col-sm-11">
                                 <div class="form-group">
+
+
+
                                     <?php
                                         $result = $pdo->query("select id, prenom from employe order by prenom ASC");
 
                                         echo "<label for=\"sel1\">Employe</label>";
                                             echo "<select class=\"form-control\"  name=\"employeid\">";
+
+                                              echo '<option value=""></option>';
+
                                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                                   unset($id, $nom);
                                                   $id = $row['id'];
@@ -110,14 +122,15 @@
 
                 </form>
 
-                <div class="col-sm-5">
+                <div class="col-sm-6">
 
                     <h4>Heures attribuée(s) par Employe, par Projet</h4>
 
-                    <!-- /// AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
+                    <!-- /// test AFFICHER LISTE HEURE DESCENDU PAR PERSONNE PAR PROJET PAR DATE  /// -->
                         <?php
 
-                            $reponse = $pdo->query('select sprint.numero as Sprint,
+                            $reponse = $pdo->query('select
+                             sprint.numero as Sprint,
                              attribution.heure as NbHeure,
                              projet.nom as projet,
                              employe.prenom as employe
@@ -171,18 +184,76 @@
 
                 </div>
 
+                       <!-- tableau total des heures attribuées par sprint -->
+
                 <div class="col-sm-3">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h4>Heures attribuées par projet</h4>
+
+                          <table class="table table-striped table-bordered">
+
+                             <thead>
+                                  <tr>
+                                      <th>Heures attribuées</th>
+                                      <th>Projet</th>
+                                  </tr>
+                              </thead>
+
+                              <tbody>
+
+                            <?php
+
+
+                            $reponse = $pdo->query('select
+                             sprint.id as Sprint,
+                             projet.nom as pnom,
+                             sum(attribution.heure) as totHeure,
+                             attribution.id_Projet as idp
+                             FROM attribution
+                             INNER JOIN sprint ON sprint.id = attribution.id_Sprint
+                             INNER JOIN projet ON projet.id = attribution.id_Projet
+                             WHERE id_sprint=(SELECT max(id) FROM sprint)
+                             GROUP BY sprint.id, attribution.id_Projet');
+
+
+
+                            while ($donnees = $reponse->fetch())
+                            {
+                              echo "  <tr>";
+                              echo "  <td>";
+                              echo  $donnees['totHeure'];
+                              echo "  </td>";
+                              echo "  <td>";
+                              echo  $donnees['pnom'];
+                              echo "  </td>";
+                              echo "  </tr>";
+                            }
+
+                            $reponse->closeCursor();
+
+                            ?>
+
+                              </tbody>
+
+                          </table>
+
+
+                    </div>
+                    <div class="col-sm-12">
                     <?php
 
-                        $reponse = $pdo->query('select  sprint.numero as Sprint, sum(attribution.heure) as totHeure
-                                    FROM attribution INNER JOIN sprint on sprint.id = attribution.id_Sprint
-                                    where id_sprint=(SELECT max(id) FROM sprint)
-                                    GROUP BY sprint.id');
+                        $reponse = $pdo->query('select
+                          sprint.numero as Sprint,
+                          sum(attribution.heure) as totHeure FROM attribution
+                          INNER JOIN sprint on sprint.id = attribution.id_Sprint
+                          WHERE id_sprint=(SELECT max(id) FROM sprint)
+                          GROUP BY sprint.id');
 
                         echo "<table class=\"table\">";
                                 echo "<thead>";
                                  echo " <tr>";
-                                    echo "<th>Total heures attribués pour le sprint</th>";
+                                    echo "<th>Total heures attribuées pour le sprint</th>";
                                 echo "  </tr>";
                               echo "  </thead>";
                               echo "  <tbody>";
@@ -201,52 +272,13 @@
                         $reponse->closeCursor();
 
                     ?>
-
+                    </div>
+                  </div>
                 </div>
 
             </div>
-
-
-
-<!-- Modal - Update User details -->
-<div class="modal fade" id="update_user_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Update</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <label for="update_first_name">First Name</label>
-                    <input type="text" id="update_first_name" placeholder="First Name" class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="update_last_name">Last Name</label>
-                    <input type="text" id="update_last_name" placeholder="Last Name" class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="update_email">Email Address</label>
-                    <input type="text" id="update_email" placeholder="Email Address" class="form-control"/>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()" >Save Changes</button>
-                <input type="hidden" id="hidden_user_id">
-            </div>
-        </div>
-    </div>
-</div>
-<!-- // Modal -->
 
         </div>
 
         </br>
-
-
     </html>

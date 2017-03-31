@@ -21,11 +21,10 @@
     <!-- Navbar Twitter Bootstrap -->
 
 <ul class="nav nav-tabs nav-justified">
-  <li class="active"><a href="index">Créer Sprint</a></li>
-  <li ><a href="page2.php">Attribution Heures</a></li>
+  <li class="active"><a href="page2.php">Attribution Heures</a></li>
   <li><a href="page3.php">Heures Descendues</a></li>
   <li><a href="page4.php">Burndownchart</a></li>
-  <li><a href="../login/logout.php">Logout</a></li>
+  <li><a href="../login/login.php">Login</a></li>
 </ul>
 
 
@@ -38,7 +37,6 @@
 <script src="../js/bootstrap/dataTables.bootstrap.min.js"></script>
 <script src="../js/highcharts/highcharts.js"></script>
 <script src="../js/highcharts/exporting.js"></script>
-
 <script src="../js/highcharts/exporting.js"></script>
 
 <script src="../js/app.js"></script>

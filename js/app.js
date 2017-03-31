@@ -55,7 +55,9 @@ let ready = function() {
         if (m < 10) {
             m = "0" + m;
         };
-        data = a + "-" + m + "-" + j;
+
+         data = a + "-" + m + "-" + j;
+
         _dat.value = data;
     };
 
@@ -314,44 +316,12 @@ let ready = function() {
     }
 
 
-    // edit.php javascript and ajax
 
 
-    function UpdateUserDetails() {
-        // get values
-        var first_name = $("#update_first_name").val();
-        first_name = first_name.trim();
-        var last_name = $("#update_last_name").val();
-        last_name = last_name.trim();
-        var email = $("#update_email").val();
-        email = email.trim();
 
-        if (first_name == "") {
-            alert("First name field is required!");
-        } else if (last_name == "") {
-            alert("Last name field is required!");
-        } else if (email == "") {
-            alert("Email field is required!");
-        } else {
-            // get hidden field value
-            var id = $("#hidden_user_id").val();
+    // delete.php javascript and ajax
 
-            // Update the details by requesting to the server using ajax
-            $.post("ajax/update.php", {
-                    id: id,
-                    first_name: first_name,
-                    last_name: last_name,
-                    email: email
-                },
-                function(data, status) {
-                    // hide modal popup
-                    $("#update_user_modal").modal("hide");
-                    // reload Users by using readRecords();
-                    readRecords();
-                }
-            );
-        }
-    }
+
 
 
 

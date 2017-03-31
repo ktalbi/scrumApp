@@ -8,5 +8,5 @@
         $req->execute(array($_POST['nbheure'], $_POST['numerosprint'], $_POST['employeid'], $_POST['projetid']));
 
         //actualiser la page
-        header('Location: ../admin/page3.php');
+        header('Location: ../admin/page2.php');
     ?>
